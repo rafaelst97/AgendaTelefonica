@@ -5,7 +5,9 @@
       <map>
         <entry key="..\:/Projetos/AgendaTelefonica/app/src/main/res/layout/activity_main.xml" value="0.23052536231884058" />
         <entry key="..\:/Projetos/AgendaTelefonica/app/src/main/res/layout/content_main.xml" value="0.23052536231884058" />
+        <entry key="..\:/Projetos/AgendaTelefonica/app/src/main/res/layout/fragment_editar_contato.xml" value="0.17135416666666667" />
         <entry key="..\:/Projetos/AgendaTelefonica/app/src/main/res/layout/fragment_first.xml" value="0.22" />
+        <entry key="..\:/Projetos/AgendaTelefonica/app/src/main/res/layout/fragment_second.xml" value="0.23052536231884058" />
       </map>
     </option>
   </component>
