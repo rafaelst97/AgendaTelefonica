@@ -7,7 +7,7 @@
     tools:context=".AdicionarContatoFragment">
 
     <Button
-        android:id="@+id/botaoSalvarEditar"
+        android:id="@+id/botaoSalvarAdicionar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="168dp"
@@ -16,11 +16,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.796"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerTipoEditar"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerTipoAdicionar"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/textNomeEditar"
+        android:id="@+id/textNomeAdicionar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textTelefoneEditar"
+        android:id="@+id/textTelefoneAdicionar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
@@ -41,10 +41,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputNomeEditar" />
+        app:layout_constraintTop_toBottomOf="@+id/inputNomeAdicionar" />
 
     <TextView
-        android:id="@+id/textTipoEditar"
+        android:id="@+id/textTipoAdicionar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -53,10 +53,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.147"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputTelefoneEditar" />
+        app:layout_constraintTop_toBottomOf="@+id/inputTelefoneAdicionar" />
 
     <EditText
-        android:id="@+id/inputNomeEditar"
+        android:id="@+id/inputNomeAdicionar"
         android:layout_width="281dp"
         android:layout_height="48dp"
         android:layout_marginTop="28dp"
@@ -66,12 +66,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textNomeEditar"
+        app:layout_constraintTop_toBottomOf="@+id/textNomeAdicionar"
         tools:ignore="DuplicateSpeakableTextCheck"
         android:importantForAutofill="no" />
 
     <EditText
-        android:id="@+id/inputTelefoneEditar"
+        android:id="@+id/inputTelefoneAdicionar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -84,11 +84,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.278"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTelefoneEditar"
+        app:layout_constraintTop_toBottomOf="@+id/textTelefoneAdicionar"
         tools:ignore="DuplicateSpeakableTextCheck" />
 
     <Spinner
-        android:id="@+id/spinnerTipoEditar"
+        android:id="@+id/spinnerTipoAdicionar"
         android:layout_width="313dp"
         android:layout_height="55dp"
         android:layout_marginTop="36dp"
@@ -96,10 +96,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTipoEditar" />
+        app:layout_constraintTop_toBottomOf="@+id/textTipoAdicionar" />
 
     <Button
-        android:id="@+id/botaoCancelarEditar"
+        android:id="@+id/botaoCancelarAdicionar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="168dp"
