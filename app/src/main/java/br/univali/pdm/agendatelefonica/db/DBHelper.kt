@@ -1,6 +1,7 @@
 package br.univali.pdm.agendatelefonica.db
 
 import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
@@ -41,9 +42,9 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null,
             val selectQuery = "SELECT * FROM $TABLE_NAME"
             val db:SQLiteDatabase = this.writableDatabase
             val cursor: Cursor = db.rawQuery(selectQuery, null)
+            val contatoPessoa = Contato()
             if (cursor.moveToFirst()) {
                 do {
-                    val contatoPessoa = Contato()
                     contatoPessoa.id = cursor.getInt(cursor.getColumnIndex(COL_ID))
                     contatoPessoa.nome = cursor.getString(cursor.getColumnIndex(COL_NOME))
                     contatoPessoa.telefone = cursor.getString(cursor.getColumnIndex(COL_TELEFONE))
@@ -52,7 +53,39 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null,
                     contatoPessoa.add(contatoPessoa)
                 } while (cursor.moveToNext())
             }
-            return contatoPessoa
+            db.close()
+            return listOf(contatoPessoa)
         }
+
+    fun addContato(contato: Contato){
+        val db: SQLiteDatabase = this.writableDatabase
+        val valores = ContentValues()
+        valores.put(COL_ID, contato.id)
+        valores.put(COL_NOME, contato.nome)
+        valores.put(COL_TELEFONE, contato.telefone)
+        valores.put(COL_TIPO, contato.tipo)
+
+        db.insert(TABLE_NAME, null, valores)
+        db.close()
+    }
+
+    fun updateContato(contato: Contato): Int{
+        val db: SQLiteDatabase = this.writableDatabase
+        val valores = ContentValues()
+        valores.put(COL_ID, contato.id)
+        valores.put(COL_NOME, contato.nome)
+        valores.put(COL_TELEFONE, contato.telefone)
+        valores.put(COL_TIPO, contato.tipo)
+
+        return db.update(TABLE_NAME, valores, "$COL_ID=?", arrayOf(contato.id.toString()))
+    }
+
+    fun deleteContato(contato: Contato){
+        val db: SQLiteDatabase = this.writableDatabase
+
+
+        db.delete(TABLE_NAME, "$COL_ID=?", arrayOf(contato.id.toString()))
+        db.close()
+    }
 
 }
