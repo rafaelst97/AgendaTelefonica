@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.univali.pdm.agendatelefonica.databinding.FragmentAgendaBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.*
 
 /**
@@ -31,12 +32,17 @@ class AgendaFragment : Fragment() {
     ): View? {
 
         val root = inflater.inflate(R.layout.fragment_agenda, container, false)
+        val botaoAdicionar = root.findViewById<FloatingActionButton>(R.id.adicionarContato)
         contatoRecyclerView = root.findViewById(R.id.listaContatos)
-        contatoRecyclerView.layoutManager = LinearLayoutManager(this)
+        contatoRecyclerView.layoutManager = LinearLayoutManager(context)
         contatoRecyclerView.setHasFixedSize(true)
 
         contatoArrayList = arrayListOf<Contato>()
         getDadosContato()
+
+        botaoAdicionar.setOnClickListener {
+            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        }
 
         _binding = FragmentAgendaBinding.inflate(inflater, container, false)
         return root
