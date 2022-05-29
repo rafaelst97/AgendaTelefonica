@@ -11,11 +11,13 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.navigation.fragment.findNavController
 import br.univali.pdm.agendatelefonica.databinding.ActivityMainBinding
+import com.google.firebase.database.DatabaseReference
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

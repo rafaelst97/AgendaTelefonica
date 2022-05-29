@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import br.univali.pdm.agendatelefonica.databinding.FragmentAgendaBinding
+import com.google.firebase.database.*
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -14,6 +17,9 @@ import br.univali.pdm.agendatelefonica.databinding.FragmentAgendaBinding
 class AgendaFragment : Fragment() {
 
     private var _binding: FragmentAgendaBinding? = null
+    private lateinit var database: DatabaseReference
+    private lateinit var contatoRecyclerView: RecyclerView
+    private lateinit var contatoArrayList: ArrayList<Contato>
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,8 +30,41 @@ class AgendaFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        val root = inflater.inflate(R.layout.fragment_agenda, container, false)
+        contatoRecyclerView = root.findViewById(R.id.listaContatos)
+        contatoRecyclerView.layoutManager = LinearLayoutManager(this)
+        contatoRecyclerView.setHasFixedSize(true)
+
+        contatoArrayList = arrayListOf<Contato>()
+        getDadosContato()
+
         _binding = FragmentAgendaBinding.inflate(inflater, container, false)
-        return binding.root
+        return root
+
+    }
+
+    private fun getDadosContato() {
+
+        database = FirebaseDatabase.getInstance().getReference("Contatos")
+        database.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                if (snapshot.exists()){
+                    for (contatoSnapshot in snapshot.children){
+
+                        val contato = contatoSnapshot.getValue(Contato::class.java)
+                        contatoArrayList.add(contato!!)
+                    }
+
+                    contatoRecyclerView.adapter = AgendaAdapter(contatoArrayList)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
 
     }
 

@@ -8,7 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.navigation.fragment.findNavController
+import androidx.room.Database
 import br.univali.pdm.agendatelefonica.databinding.FragmentAdicionarContatoBinding
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -16,6 +19,7 @@ import br.univali.pdm.agendatelefonica.databinding.FragmentAdicionarContatoBindi
 class AdicionarContatoFragment : Fragment() {
 
     private var _binding: FragmentAdicionarContatoBinding? = null
+    private lateinit var database: DatabaseReference
     val tiposTelefone = arrayOf("Casa", "Celular", "Trabalho")
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -30,6 +34,9 @@ class AdicionarContatoFragment : Fragment() {
         val spinner: Spinner = root.findViewById(R.id.spinnerTipoAdicionar)
         val salvar: Button = root.findViewById(R.id.botaoSalvarAdicionar)
         val cancelar: Button = root.findViewById(R.id.botaoCancelarAdicionar)
+        var campoNome: EditText = root.findViewById(R.id.inputNomeAdicionar)
+        var campoTelefone: EditText = root.findViewById(R.id.inputTelefoneAdicionar)
+        var tipoTelefone: Spinner = root.findViewById(R.id.spinnerTipoAdicionar)
 
         context?.let { context ->
             ArrayAdapter.createFromResource(
@@ -43,6 +50,20 @@ class AdicionarContatoFragment : Fragment() {
         }
 
         salvar.setOnClickListener {
+            val nome: String = campoNome.text.toString()
+            val telefone: String = campoTelefone.text.toString()
+            val tipo: String = tipoTelefone.selectedItem.toString()
+
+            database = FirebaseDatabase.getInstance().getReference("Contatos")
+            val Contato = Contato(nome, telefone, tipo)
+            database.child(nome).setValue(Contato).addOnSuccessListener {
+
+                campoNome.text.clear()
+                campoTelefone.text.clear()
+                tipoTelefone.adapter = null
+
+            }
+
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
 
