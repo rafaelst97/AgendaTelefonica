@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "987877585768",
+    "project_id": "agendatelefonica-23452",
+    "storage_bucket": "agendatelefonica-23452.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:987877585768:android:1df30996544109b98c1cdd",
+        "android_client_info": {
+          "package_name": "br.univali.pdm.agendatelefonica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "987877585768-4c282341n8s78dgeahi72mhdk7edp68a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAugFW4m6F0g6aENOtrOROL5e9znczrkI8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "987877585768-4c282341n8s78dgeahi72mhdk7edp68a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
